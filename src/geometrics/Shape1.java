@@ -1,13 +1,10 @@
 package geometrics;
 
 abstract public class Shape1 {
-    public double area(){
-        return 0.0;
-    }
 
-    public double perimeter(){
-        return 0.0;
-    }
+    public abstract double area();
+
+    public abstract double perimeter();
 
     // abstract method for displaying out the parameters/attributes
     public abstract void display();
