@@ -1,10 +1,9 @@
 package geometrics;
 
-public class Square extends Point {
+public class Square extends Shape {
     private double length;
 
-    public Square(double x, double y, double length) {
-        super(x, y);
+    public Square(double length) {
         this.length = length;
     }
 
@@ -21,8 +20,7 @@ public class Square extends Point {
     }
 
     public void display() {
-        super.display();
-        System.out.print("; Length= " + getLength());
+        System.out.print("Length= " + getLength());
     }
 
     public String name() {

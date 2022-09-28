@@ -1,11 +1,10 @@
 package geometrics;
 
-public class Rectangle extends Point {
+public class Rectangle extends Shape {
     private double width;
     private double height;
 
-    public Rectangle(double x, double y, double width, double height) {
-        super(x, y);
+    public Rectangle(double width, double height) {
         this.width = width;
         this.height = height;
     }
@@ -27,8 +26,7 @@ public class Rectangle extends Point {
     }
 
     public void display() {
-        super.display();
-        System.out.print("; Width= " + getWidth() + ", Height= " + getHeight());
+        System.out.print("Width= " + getWidth() + ", Height= " + getHeight());
     }
 
     public String name() {

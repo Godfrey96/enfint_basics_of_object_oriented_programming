@@ -1,13 +1,12 @@
 package geometrics;
 
-public class Triangle extends Point {
+public class Triangle extends Shape {
     private double base;
     private double height;
     private double side1;
     private double side2;
 
-    public Triangle(double x, double y, double base, double height, double side1, double side2) {
-        super(x, y);
+    public Triangle(double base, double height, double side1, double side2) {
         this.base = base;
         this.height = height;
         this.side1 = side1;
@@ -39,8 +38,7 @@ public class Triangle extends Point {
     }
 
     public void display() {
-        super.display();
-        System.out.print("; Side= " + getSide1() + ", Base= " + getBase() + ", Side= " + getSide2() + ", Height-Base= "
+        System.out.print("Side1=" + getSide1() + ", Base= " + getBase() + ", Side2= " + getSide2() + ", Height-Base= "
                 + getHeight());
     }
 

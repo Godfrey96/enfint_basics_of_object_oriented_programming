@@ -1,12 +1,11 @@
 package geometrics;
 
-public class Parallelogram extends Point {
+public class Parallelogram extends Shape {
     private double base;
     private double side;
     private double height;
 
-    public Parallelogram(double x, double y, double base, double side, double height) {
-        super(x, y);
+    public Parallelogram(double base, double side, double height) {
         this.base = base;
         this.side = side;
         this.height = height;
@@ -33,8 +32,7 @@ public class Parallelogram extends Point {
     }
 
     public void display() {
-        super.display();
-        System.out.print("; Side= " + getSide() + ", Base= " + getBase() + ", Height= " + getHeight());
+        System.out.print("Side=" + getSide() + ", Base= " + getBase() + ", Height= " + getHeight());
     }
 
     public String name() {

@@ -5,8 +5,7 @@ import java.util.*;
 public class PhoneBook {
 
     Scanner input = new Scanner(System.in);
-    // Contacts contact = new Contacts();
-    ArrayList<Contacts> myContact = new ArrayList<Contacts>();
+    ArrayList<Contact> myContact = new ArrayList<Contact>();
 
     public PhoneBook() {
     }
@@ -50,27 +49,36 @@ public class PhoneBook {
         System.out.print("Enter contact number: ");
         String phone = input.nextLine();
 
-        // Contacts cont = new Contacts(name, phone);
+        Contact newCont = new Contact(name, phone);
 
-        Contacts cont = Contacts.createContact(name, phone);
-        if (newContact(cont)) {
-            System.out.println("Contact added successfully: " + phone + "-" + name);
-        } else {
-            System.out.println("Cannot added contact " + phone + ", already exists");
-        }
+        newContact(newCont);
+
         printAction();
     }
 
     // method for checking a contact exist before adding a new contact
-    public boolean newContact(Contacts contact) {
+    public boolean newContact(Contact contact) {
         // check if contact exists before adding a new contact
         if (findContactByPhone(contact.getPhoneNumber()) >= 0) {
-            System.out.println("Contact already exists.");
+            System.out.println("Cannot add " + contact.getPhoneNumber() + ", because already exists");
             return true;
+        } else {
+            System.out.println(contact.displayContact() + ", added successfully");
         }
         // add new contact if does not exist
         myContact.add(contact);
         return true;
+    }
+
+    // checking if the input contact number exists in the array
+    int findContactByPhone(String contactPhone) {
+        for (int i = 0; i < myContact.size(); i++) {
+            Contact contacts = myContact.get(i);
+            if (contacts.getPhoneNumber().equals(contactPhone)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     // method displaying list of all contacts
@@ -79,7 +87,7 @@ public class PhoneBook {
             System.out.println("-------------------------------");
             System.out.println("Available Contacts: ");
             for (int i = 0; i < myContact.size(); i++) {
-                System.out.println(" " + myContact.get(i).getPhoneNumber() + "-" + myContact.get(i).getName());
+                System.out.println(" " + myContact.get(i).displayContact());
             }
             System.out.println("-------------------------------");
         } else {
@@ -90,47 +98,15 @@ public class PhoneBook {
         printAction();
     }
 
-    // find contact position
-    // private int findContact(Contacts contact){
-    // return myContact.indexOf(contact);
-    // }
-
     // find contact names
     private int findContact(String contactName) {
         for (int i = 0; i < myContact.size(); i++) {
-            Contacts contacts = myContact.get(i);
+            Contact contacts = myContact.get(i);
             if (contacts.getName().equals(contactName)) {
                 return i;
             }
         }
         return -1;
-    }
-
-    // find contact phones
-    int findContactByPhone(String contactPhone) {
-        for (int i = 0; i < myContact.size(); i++) {
-            Contacts contacts = myContact.get(i);
-            if (contacts.getPhoneNumber().equals(contactPhone)) {
-                return i;
-            }
-        }
-        return -1;
-    }
-
-    // query contact
-    // public String queryContact(Contacts contact){
-    // if (findContact(contact) >= 0){
-    // return contact.getName();
-    // }
-    // return null;
-    // }
-
-    public Contacts queryContact(String name) {
-        int position = findContact(name);
-        if (position >= 0) {
-            return myContact.get(position);
-        }
-        return null;
     }
 
     // search for an existing contact and return array of phone numbers is exists or
@@ -139,47 +115,55 @@ public class PhoneBook {
         Scanner input = new Scanner(System.in);
 
         System.out.print("Enter a contact name to query: ");
-        // Contacts phoneContact = new Contacts(null, null);
-        Contacts phoneContact = new Contacts();
         String name = input.nextLine().toLowerCase();
+        Contact phoneContact = new Contact(name);
 
         phoneContact.setName(name);
 
+        Contact existContact = queryContact(name);
+
+        if (existContact == null) {
+            System.out.println("-------------------------------");
+            System.out.println("No phone numbers found for: " + name);
+            System.out.println("-------------------------------");
+            return;
+        }
         System.out.println("-------------------------------");
-        // System.out.println("List of Contact's for: " + getContact(name));
+        System.out.println("Phone numbers belonging to: " + name);
         getContact(name);
         System.out.println("-------------------------------");
+    }
 
-        // Contacts existContact = queryContact(name);
-        //
-        // if(existContact == null){
-        // System.out.println("Contact not found");
-        // return;
-        // }
-        // System.out.println(existContact.getPhoneNumber());
+    // query a contact name
+    public Contact queryContact(String name) {
+        int position = findContact(name);
+        if (position >= 0) {
+            return myContact.get(position);
+        }
+        return null;
     }
 
     // query a contact by name and display an array of phone numers
-    public ArrayList<Contacts> getAllContacts() {
+    public ArrayList<Contact> getAllContacts() {
         return myContact;
     }
 
-    public ArrayList<Contacts> getContact(String name) {
+    public ArrayList<Contact> getContact(String name) {
         if (myContact.isEmpty()) {
             // initialize contact if empty
             getAllContacts();
         }
 
-        ArrayList<Contacts> phones = new ArrayList<>();
+        ArrayList<Contact> phones = new ArrayList<>();
         // return contacts based on the contact name from user input
         if (name == null) {
             return phones;
         }
 
-        for (Contacts contact : myContact) {
+        for (Contact contact : myContact) {
             if (contact.getName().equals(name)) {
                 phones.add(contact);
-                System.out.println(contact.getPhoneNumber());
+                System.out.println(" " + contact.getPhoneNumber());
             }
         }
 
