@@ -42,7 +42,8 @@ public class Triangle extends Shape {
                 + getHeight());
     }
 
-    public String name() {
-        return "Triangle";
+    // public String name() {
+    public String getName() {
+        return getClass().getSimpleName();
     }
 }

@@ -34,7 +34,7 @@ public class Point extends Shape {
     }
 
     // printing out the name of class
-    public String name() {
-        return "Point";
+    public String getName() {
+        return getClass().getSimpleName();
     }
 }

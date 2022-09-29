@@ -23,7 +23,8 @@ public class Square extends Shape {
         System.out.print("Length= " + getLength());
     }
 
-    public String name() {
-        return "Square";
+    // public String name() {
+    public String getName() {
+        return getClass().getSimpleName();
     }
 }

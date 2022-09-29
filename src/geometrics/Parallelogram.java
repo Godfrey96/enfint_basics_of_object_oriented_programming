@@ -32,11 +32,12 @@ public class Parallelogram extends Shape {
     }
 
     public void display() {
-        System.out.print("Side=" + getSide() + ", Base= " + getBase() + ", Height= " + getHeight());
+        System.out.print("Side= " + getSide() + ", Base= " + getBase() + ", Height= " + getHeight());
     }
 
-    public String name() {
-        return "Parallelogram";
+    // public String name() {
+    public String getName() {
+        return getClass().getSimpleName();
     }
 
 }

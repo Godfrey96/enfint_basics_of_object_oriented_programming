@@ -32,7 +32,7 @@ public class Line extends Shape {
     }
 
     // printing out the name of class
-    public String name() {
-        return "Line";
+    public String getName() {
+        return getClass().getSimpleName();
     }
 }

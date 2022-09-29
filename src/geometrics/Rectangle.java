@@ -29,7 +29,8 @@ public class Rectangle extends Shape {
         System.out.print("Width= " + getWidth() + ", Height= " + getHeight());
     }
 
-    public String name() {
-        return "Rectangle";
+    // public String name() {
+    public String getName() {
+        return getClass().getSimpleName();
     }
 }

@@ -23,7 +23,7 @@ public class Circle extends Shape {
         System.out.print("Radius= " + getRadius());
     }
 
-    public String name() {
-        return "Circle";
+    public String getName() {
+        return getClass().getSimpleName();
     }
 }
