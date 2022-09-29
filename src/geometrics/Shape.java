@@ -10,5 +10,5 @@ abstract public class Shape {
     public abstract void display();
 
     // abstract method for returning the names of the shapes
-    public abstract String name();
+    public abstract String getName();
 }

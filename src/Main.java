@@ -28,32 +28,10 @@ public class Main {
                 ph.printAction();
                 break;
             case 2:
-                Shape[] shapes = new Shape[7];
-
-                shapes[0] = new Point(7, 11);
-                shapes[1] = new Line(8, 7);
-                shapes[2] = new Circle(3.5);
-                shapes[3] = new Triangle(7, 8, 6, 8);
-                shapes[4] = new Square(22);
-                shapes[5] = new Rectangle(6, 8);
-                shapes[6] = new Parallelogram(8, 6, 10);
-
-                for (int i = 0; i < 7; i++) {
-                    System.out.print((shapes[i]).name());
-                    System.out.print(": ");
-                    shapes[i].display();
-                    System.out.print("\nArea = " + (Math.round(shapes[i].area())));
-                    System.out.println("\nPerimeter = " + (Math.round(shapes[i].perimeter())) + "\n");
-                }
+                showShapes();
                 break;
             case 3:
-                System.out.println("Car List: ");
-                for (Car car : Car.values()) {
-                    System.out.println(" " + car + " selling price is R" + car.displayPrice());
-                }
-
-                Car selectedCar = Car.valueOf("BENZ");
-                System.out.println(" " + "Selected Car is " + selectedCar);
+                displayCarEnums();
                 break;
             case 4:
                 System.out.println("Thank you for using this application. BYE!");
@@ -62,5 +40,37 @@ public class Main {
                 System.out.println("Invalid Option");
         }
 
+    }
+
+    // method for priniting out all the shapes
+    public static void showShapes() {
+        Shape[] shapes = new Shape[7];
+
+        shapes[0] = new Point(7, 11);
+        shapes[1] = new Line(8, 7);
+        shapes[2] = new Circle(3.5);
+        shapes[3] = new Triangle(7, 8, 6, 8);
+        shapes[4] = new Square(22);
+        shapes[5] = new Rectangle(6, 8);
+        shapes[6] = new Parallelogram(8, 6, 10);
+
+        for (int i = 0; i < 7; i++) {
+            System.out.print(shapes[i].getName());
+            System.out.print(": ");
+            shapes[i].display();
+            System.out.print("\nArea = " + (Math.round(shapes[i].area())));
+            System.out.println("\nPerimeter = " + (Math.round(shapes[i].perimeter())) + "\n");
+        }
+    }
+
+    // method for displaying list of cars stored in enums
+    public static void displayCarEnums() {
+        System.out.println("Car List: ");
+        for (Car car : Car.values()) {
+            System.out.println(" " + car + " selling price is R" + car.displayPrice());
+        }
+
+        Car selectedCar = Car.valueOf("BENZ");
+        System.out.println(" " + "Selected Car is " + selectedCar);
     }
 }
