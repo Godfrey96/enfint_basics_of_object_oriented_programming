@@ -1,8 +1,9 @@
 import geometrics.*;
-import phone.Contacts;
 import phone.PhoneBook;
 
 import java.util.Scanner;
+
+import enumeration.Car;
 
 public class Main {
 
@@ -14,7 +15,8 @@ public class Main {
         System.out.println(
                 "1 - PhoneBook\n" +
                         "2 - Shapes\n" +
-                        "3 - To Exit\n");
+                        "3 - Enumeration\n" +
+                        "4 - To Exit\n");
         System.out.print("Choose your Option: ");
 
         Scanner input = new Scanner(System.in);
@@ -26,15 +28,15 @@ public class Main {
                 ph.printAction();
                 break;
             case 2:
-                Shape1[] shapes = new Shape1[7];
+                Shape[] shapes = new Shape[7];
 
                 shapes[0] = new Point(7, 11);
-                shapes[1] = new Line(70, 8);
-                shapes[2] = new Circle(22, 8, 3.5);
-                shapes[3] = new Triangle(5, 3, 7, 8, 6, 8);
-                shapes[4] = new Square(22, 8, 3.5);
-                shapes[5] = new Rectangle(4, 2, 6, 8);
-                shapes[6] = new Parallelogram(2, 3, 8, 6, 10);
+                shapes[1] = new Line(8, 7);
+                shapes[2] = new Circle(3.5);
+                shapes[3] = new Triangle(7, 8, 6, 8);
+                shapes[4] = new Square(22);
+                shapes[5] = new Rectangle(6, 8);
+                shapes[6] = new Parallelogram(8, 6, 10);
 
                 for (int i = 0; i < 7; i++) {
                     System.out.print((shapes[i]).name());
@@ -45,6 +47,15 @@ public class Main {
                 }
                 break;
             case 3:
+                System.out.println("Car List: ");
+                for (Car car : Car.values()) {
+                    System.out.println(" " + car + " selling price is R" + car.displayPrice());
+                }
+
+                Car selectedCar = Car.valueOf("BENZ");
+                System.out.println(" " + "Selected Car is " + selectedCar);
+                break;
+            case 4:
                 System.out.println("Thank you for using this application. BYE!");
                 break;
             default:

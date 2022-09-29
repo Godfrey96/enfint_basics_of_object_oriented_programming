@@ -1,22 +1,16 @@
 package phone;
 
-public class Contacts {
+public class Contact {
     private String name;
     private String phoneNumber;
 
-    public Contacts(){}
-
-    public Contacts(String phoneNumber){
-        this.phoneNumber = phoneNumber;
+    public Contact(String name) {
+        this.name = name;
     }
 
-    public Contacts(String name, String phoneNumber){
+    public Contact(String name, String phoneNumber) {
         this.name = name;
         this.phoneNumber = phoneNumber;
-    }
-
-    public static Contacts createContact(String name, String phoneNumber){
-        return new Contacts(name, phoneNumber);
     }
 
     public String getName() {
@@ -35,7 +29,8 @@ public class Contacts {
         this.phoneNumber = phoneNumber;
     }
 
-
-
+    public String displayContact() {
+        return getPhoneNumber() + "-" + getName();
+    }
 
 }

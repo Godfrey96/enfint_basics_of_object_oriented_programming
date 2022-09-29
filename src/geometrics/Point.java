@@ -1,6 +1,6 @@
 package geometrics;
 
-public class Point extends Shape1 {
+public class Point extends Shape {
 
     private double pointX;
     private double pointY;

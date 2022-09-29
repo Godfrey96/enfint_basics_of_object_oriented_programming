@@ -1,10 +1,9 @@
 package geometrics;
 
-public class Circle extends Point {
+public class Circle extends Shape {
     private double radius;
 
-    public Circle(double x, double y, double radius) {
-        super(x, y);
+    public Circle(double radius) {
         this.radius = radius;
     }
 
@@ -21,8 +20,7 @@ public class Circle extends Point {
     }
 
     public void display() {
-        super.display();
-        System.out.print("; Radius= " + getRadius());
+        System.out.print("Radius= " + getRadius());
     }
 
     public String name() {
